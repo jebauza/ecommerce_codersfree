@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Size;
 use App\Models\Brand;
 use App\Models\Color;
+use App\Models\Image;
 use App\Models\Subcategory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -60,5 +61,13 @@ class Product extends Model
     public function sizes(): HasMany
     {
         return $this->hasMany(Size::class, 'product_id', 'id');
+    }
+
+    /**
+     * Get all of the images product.
+     */
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

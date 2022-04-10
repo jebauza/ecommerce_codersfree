@@ -13,6 +13,8 @@ class Brand extends Model
 
     protected $table = 'brands';
 
+    protected $fillable = ['name'];
+
     /**
      * The categories that belong to the Brand
      *
