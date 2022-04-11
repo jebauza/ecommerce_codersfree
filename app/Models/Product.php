@@ -17,6 +17,9 @@ class Product extends Model
 {
     use HasFactory;
 
+    const DRAFT_COPY = 1; // BORRADOR
+    const PUBLISHED = 2; // PUBLICADO
+
     protected $table = 'products';
 
     protected $guarded = ['id','created_at','updated_at'];
