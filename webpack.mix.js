@@ -15,7 +15,8 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
-    ]);
+    ])
+    .sass('resources/sass/appSass.scss', 'public/css');
 
 if (mix.inProduction()) {
     mix.version();
