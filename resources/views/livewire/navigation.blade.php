@@ -14,7 +14,7 @@
 
         @livewire('search')
 
-        <div class="relative ml-3">
+        <div class="relative mx-6">
             @auth
 
             <x-jet-dropdown align="right" width="48">
@@ -59,16 +59,18 @@
                     <x-jet-dropdown-link href="{{ route('login') }}">
                         {{ __('Login') }}
                     </x-jet-dropdown-link>
-
                     <x-jet-dropdown-link href="{{ route('register') }}">
                         {{ __('Register') }}
                     </x-jet-dropdown-link>
-
                 </x-slot>
             </x-jet-dropdown>
 
             @endauth
         </div>
+
+        @livewire('dropdown-cart')
+
+
 
     </div>
 </header>
