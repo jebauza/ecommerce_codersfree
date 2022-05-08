@@ -1,4 +1,4 @@
-<header class="bg-gray-700">
+<header class="sticky top-0 bg-gray-700">
     <div class="container flex items-center h-16">
         <a class="flex flex-col items-center justify-center h-full px-4 font-semibold text-white bg-white bg-opacity-25 cursor-pointer">
             <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -70,7 +70,9 @@
 
         @livewire('dropdown-cart')
 
-
-
     </div>
+
+    <nav class="absolute bg-gray-700 bg-opacity-25">
+
+    </nav>
 </header>
