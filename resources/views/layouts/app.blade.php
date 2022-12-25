@@ -34,5 +34,32 @@
         @stack('modals')
 
         @livewireScripts
+
+        <script>
+            function dropdown() {
+                return {
+                    open: false,
+                    openChangeTime: new Date(),
+                    show() {
+                        if (!this.open) {
+                            this.open = true;
+                            document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+                        } else {
+                            this.open = false;
+                            document.getElementsByTagName('html')[0].style.overflow = 'auto';
+                        }
+
+                        this.openChangeTime = Date.now();
+                    },
+                    close() {
+                        if (Math.abs(Date.now() - this.openChangeTime) > 10) {
+                            this.open = false;
+                            document.getElementsByTagName('html')[0].style.overflow = 'auto';
+                            this.openChangeTime = Date.now();
+                        }
+                    }
+                }
+            }
+        </script>
     </body>
 </html>
