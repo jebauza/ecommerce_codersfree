@@ -13,11 +13,23 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/appSass.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+        <style>
+            .glider {
+                scrollbar-width: none; // firefox
+            }
+            
+            .glider::-webkit-scrollbar {
+                display: none; // webkit
+            }
+        </style>
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js" defer></script>
+
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
