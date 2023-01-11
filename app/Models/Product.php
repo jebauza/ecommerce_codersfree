@@ -17,12 +17,23 @@ class Product extends Model
 {
     use HasFactory;
 
-    const DRAFT_COPY = 1; // BORRADOR
-    const PUBLISHED = 2; // PUBLICADO
+    const DRAFT_COPY = '1'; // BORRADOR
+    const PUBLISHED = '2'; // PUBLICADO
 
     protected $table = 'products';
 
     protected $guarded = ['id','created_at','updated_at'];
+
+    /**
+     * Scope a query to only include status published.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePublished($query)
+    {
+        return $query->where('status', self::PUBLISHED);
+    }
 
     /**
      * Get the subcategory that owns the Product

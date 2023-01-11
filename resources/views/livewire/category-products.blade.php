@@ -1,13 +1,12 @@
 <div wire:init="loadPosts">
     @if (count($products))
         <div class="glider-contain">
-            <ul class="glider">
-
+            <ul class="glider-{{ $category->id }}">
                 @foreach ($products as $product)
                     <li class="bg-white rounded-lg shadow {{ $loop->last ? '' : 'mr-4' }}">
                         <article>
                             <figure>
-                                <img src="{{ Storage::url($product->images->first()->url) }}" alt="">
+                                <img class="object-cover object-center w-56 h-48" src="{{ Storage::url($product->images->first()->url) }}" alt="">
                             </figure>
 
                             <div class="px-6 py-4">
@@ -21,7 +20,6 @@
 
                     </li>
                 @endforeach
-
             </ul>
 
             <button aria-label="Previous" class="glider-prev">«</button>
