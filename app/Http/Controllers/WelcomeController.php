@@ -9,7 +9,7 @@ class WelcomeController extends Controller
 {
     public function __invoke()
     {
-        $categories = Category::with('products')->get();
+        $categories = Category::with('products.images')->get();
 
         return view('welcome', compact('categories'));
     }

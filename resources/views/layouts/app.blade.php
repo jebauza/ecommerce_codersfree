@@ -18,7 +18,7 @@
             .glider {
                 scrollbar-width: none; // firefox
             }
-            
+
             .glider::-webkit-scrollbar {
                 display: none; // webkit
             }
@@ -73,5 +73,7 @@
                 }
             }
         </script>
+
+        @stack('script')
     </body>
 </html>

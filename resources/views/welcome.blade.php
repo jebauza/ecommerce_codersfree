@@ -9,18 +9,25 @@
         </section>
     </div>
 
-    <script>
-        window.addEventListener('load', function(){
-            new Glider(document.querySelector('.glider'), {
-                slidesToShow: 5,
-                slidesToScroll: 5,
-                draggable: true,
-                dots: '.dots',
-                arrows: {
-                    prev: '.glider-prev',
-                    next: '.glider-next'
-                }
-            });
-        });
-    </script>
+    @push('script')
+        <script>
+
+            Livewire.on('glider', function() {
+                new Glider(document.querySelector('.glider'), {
+                    slidesToShow: 5.5,
+                    slidesToScroll: 5,
+                    draggable: true,
+                    dots: '.dots',
+                    arrows: {
+                        prev: '.glider-prev',
+                        next: '.glider-next'
+                    }
+                });
+            })
+
+            // window.addEventListener('load', function(){
+
+            // });
+        </script>
+    @endpush
 </x-app-layout>
