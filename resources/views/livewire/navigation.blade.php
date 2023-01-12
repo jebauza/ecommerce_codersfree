@@ -84,7 +84,7 @@
                 <ul class="bg-white">
                     @foreach ($categories as $category)
                         <li class="text-gray-500 navigation-link hover:bg-orange-500 hover:text-white">
-                            <a href="" class="flex items-center px-4 py-2 text-sm">
+                            <a href="{{ route('categories.show', $category) }}" class="flex items-center px-4 py-2 text-sm">
                                 <span class="flex justify-center w-9">{!! $category->icon !!}</span> {{ $category->name }}
                             </a>
 
@@ -111,7 +111,7 @@
             <ul>
                 @foreach ($categories as $category)
                     <li class="text-gray-500 hover:bg-orange-500 hover:text-white">
-                        <a href="" class="flex items-center px-4 py-2 text-sm">
+                        <a href="{{ route('categories.show', $category) }}" class="flex items-center px-4 py-2 text-sm">
                             <span class="flex justify-center w-9">{!! $category->icon !!}</span> {{ $category->name }}
                         </a>
                     </li>
