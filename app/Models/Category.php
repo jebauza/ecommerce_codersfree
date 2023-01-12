@@ -20,6 +20,16 @@ class Category extends Model
     protected $fillable = ['name','slug','image','icon'];
 
     /**
+     * Method getRouteKeyName (URL AMIGABLES)
+     *
+     * @return string
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    /**
      * Get all of the subcategories for the Category
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -49,15 +59,5 @@ class Category extends Model
     public function products(): HasManyThrough
     {
         return $this->hasManyThrough(Product::class, Subcategory::class);
-    }
-
-    /**
-     * Method getRouteKeyName (URL AMIGABLES)
-     *
-     * @return string
-     */
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
     }
 }

@@ -25,6 +25,16 @@ class Product extends Model
     protected $guarded = ['id','created_at','updated_at'];
 
     /**
+     * Method getRouteKeyName (URL AMIGABLES)
+     *
+     * @return string
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    /**
      * Scope a query to only include status published.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
