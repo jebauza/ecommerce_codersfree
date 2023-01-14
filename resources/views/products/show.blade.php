@@ -32,10 +32,18 @@
 
                         <div class="ml-4">
                             <p class="text-left font-semibold text-green-700">Se hace envío a todo el Perú</p>
-                            <p>Recibelo el {{ now()->addDays(7)->format('l j F') }}</p>
+                            <p>Recibelo el {{ Date::now()->addDays(7)->locale('es')->format('l j F') }}</p>
                         </div>
                     </div>
                 </div>
+
+                @if ($product->subcategory->size)
+                    @livewire('add-cart-item-size', ['product' => $product])
+                @elseif ($product->subcategory->color)
+                    @livewire('add-cart-item-color', ['product' => $product])
+                @else
+                    @livewire('add-cart-item', ['product' => $product])
+                @endif
             </div>
         </div>
     </div>

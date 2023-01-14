@@ -7,6 +7,7 @@ use Database\Seeders\SizeSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\ProductSeeder;
 use Database\Seeders\CategorySeeder;
+use Database\Seeders\ColorSizeSeeder;
 use Database\Seeders\SubcategorySeeder;
 use Illuminate\Support\Facades\Storage;
 use Database\Seeders\ColorProductSeeder;
@@ -37,5 +38,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ColorSeeder::class);
         $this->call(ColorProductSeeder::class);
         $this->call(SizeSeeder::class);
+        $this->call(ColorSizeSeeder::class);
     }
 }
