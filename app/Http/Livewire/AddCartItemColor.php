@@ -24,6 +24,7 @@ class AddCartItemColor extends Component
     public function updatedColorId($colorId)
     {
         $this->colors = $this->product->colors()->get();
+
         if ($color = $this->colors->firstWhere('id', $colorId)) {
             $this->quantity = $color->pivot->quantity;
             $this->qty = $this->qty > $this->quantity ? $this->quantity : $this->qty;

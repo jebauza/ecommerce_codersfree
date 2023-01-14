@@ -35,7 +35,7 @@ class Size extends Model
     public function colors(): BelongsToMany
     {
         return $this->belongsToMany(Color::class, 'color_size', 'size_id', 'color_id')
-                    ->withPivot('id','color_id','size_id')
+                    ->withPivot('id','color_id','size_id','quantity')
                     ->withTimestamps();
     }
 }

@@ -20,7 +20,7 @@ class SizeSeeder extends Seeder
                     ->where('size', true);
         })->get();
 
-        $sizes = ['talla S', 'talla M', 'talla L'];
+        $sizes = ['S', 'M', 'L'];
 
         foreach ($products as $product) {
             foreach ($sizes as $size) {

@@ -4,7 +4,7 @@
     <select wire:model="colorId" class="form-control w-full">
         <option value="" selected disabled>Selecionar un color</option>
         @foreach ($colors as $color)
-            <option value="{{ $color->id }}">{{ $color->name }}</option>
+            <option value="{{ $color->id }}">{{ ucfirst(__($color->name)) }}</option>
         @endforeach
     </select>
 
