@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Helpers\Image;
 use App\Models\Subcategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,8 +22,11 @@ class SubcategoryFactory extends Factory
      */
     public function definition()
     {
+        $publicPathDirectory = 'subcategories';
+        $nameImagen = Image::fake(storage_path("app/public/$publicPathDirectory"), 640, 480, true, true);
+
         return [
-            'image' => 'subcategories/' . $this->faker->image('public/storage/subcategories', 640, 480, null, false), // imagen1.jpg
+            'image' => "$publicPathDirectory/$nameImagen", // imagen1.jpg
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Helpers\Image;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,8 +22,11 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $publicPathDirectory = 'categories';
+        $nameImagen = Image::fake(storage_path("app/public/$publicPathDirectory"), 640, 480, true, true);
+
         return [
-            'image' => 'categories/' . $this->faker->image('public/storage/categories', 640, 480, null, false), // imagen1.jpg
+            'image' => "$publicPathDirectory/$nameImagen"
         ];
     }
 }
