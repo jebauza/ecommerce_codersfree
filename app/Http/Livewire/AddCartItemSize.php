@@ -2,14 +2,17 @@
 
 namespace App\Http\Livewire;
 
+use App\Helpers\Utils;
 use Livewire\Component;
+use Illuminate\Support\Facades\Storage;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class AddCartItemSize extends Component
 {
     public $product, $sizes;
     public $sizeId = '';
-    public $colorId = '';
     public $colors = [];
+    public $colorId = '';
     public $qty = 1;
     public $quantity = 0;
 
@@ -29,12 +32,9 @@ class AddCartItemSize extends Component
 
         if ($size = $this->sizes->firstWhere('id', $sizeId)) {
             $this->colors = $size->colors;
-            $this->colorId = '';
-            $this->qty = 1;
-            $this->quantity = 0;
+            $this->reset(['colorId','qty','quantity']);
         } else {
-            $this->sizeId = '';
-            $this->colors = [];
+            $this->reset(['sizeId','colors','colorId','qty','quantity']);
         }
     }
 
@@ -46,18 +46,13 @@ class AddCartItemSize extends Component
             $this->colors = $size->colors;
 
             if ($color = $this->colors->firstWhere('id', $colorId)) {
-                $this->quantity = $color->pivot->quantity;
+                $this->quantity = Utils::qty_available($this->product->id, $color->id, $size->id);
                 $this->qty = $this->qty > $this->quantity ? $this->quantity : $this->qty;
             } else {
-                $this->colorId = '';
-                $this->qty = 1;
-                $this->quantity = 0;
+                $this->reset(['colorId','qty','quantity']);
             }
         } else {
-            $this->sizeId = '';
-            $this->colors = [];
-            $this->qty = 1;
-            $this->quantity = 0;
+            $this->reset(['sizeId','colors','colorId','qty','quantity']);
         }
     }
 
@@ -76,4 +71,56 @@ class AddCartItemSize extends Component
             $this->qty--;
         }
     }
+
+    /**
+     * Method addCartItem
+     *
+     * @return void
+     */
+    public function addCartItem()
+    {
+        Cart::add([
+            'id' => $this->product->id,
+            'name' => $this->product->name,
+            'qty' => $this->qty,
+            'price' => $this->product->price,
+            'weight' => 0,
+            'options' => [
+                'image' => ($imageFirst = $this->product->images->first()) ? Storage::url($imageFirst->url) : null,
+                'size' => ($size = $this->sizes->firstWhere('id', $this->sizeId)) ? $size->transform(['id','name','product_id']) : null,
+                'color' => ($color = $this->colors->firstWhere('id', $this->colorId)) ? $color->transform(['id','name']) : null
+            ]
+        ]);
+
+        if ($color && $size) {
+            $this->quantity = Utils::qty_available($this->product->id, $color->id, $size->id);
+        }
+
+        $this->reset('qty');
+        $this->emitTo('dropdown-cart', 'render');
+    }
+
+    /**
+     * Method resetData
+     *
+     * @param array $nameVariables [explicite description]
+     *
+     * @return void
+     */
+    // private function resetData(array $nameVariables): void
+    // {
+    //     $reset = [
+    //         'sizeId' => '',
+    //         'colorId' => '',
+    //         'colors' => [],
+    //         'qty' => 1,
+    //         'quantity' => 0,
+    //     ];
+
+    //     foreach ($nameVariables as $nVariable) {
+    //         if (isset($reset[$nVariable]) && isset($this->$nVariable)) {
+    //             $this->$nVariable = $reset[$nVariable];
+    //         }
+    //     }
+    // }
 }

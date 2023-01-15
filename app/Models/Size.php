@@ -38,4 +38,37 @@ class Size extends Model
                     ->withPivot('id','color_id','size_id','quantity')
                     ->withTimestamps();
     }
+
+    /**
+     * Method transform
+     *
+     * @param array<string> $nameValues [explicite description]
+     * @param string $type [explicite description]
+     *
+     * @return array|object
+     */
+    public function transform(array $nameValues = [], string $type = 'array')
+    {
+        $toArray = $this->toArray();
+        if (empty($nameValues)) {
+            $data = $toArray;
+        } else {
+            $data = [];
+            foreach ($nameValues as $nValue) {
+                if (isset($toArray[$nValue])) {
+                    $data[$nValue] = $toArray[$nValue];
+                }
+            }
+        }
+
+        switch ($type) {
+            case 'object':
+                return (object) $data;
+                break;
+
+            default:
+                return $data;
+                break;
+        }
+    }
 }

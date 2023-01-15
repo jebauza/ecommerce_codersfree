@@ -9,6 +9,21 @@ module.exports = {
         './resources/views/**/*.blade.php',
     ],
 
+    safelist: [
+        {
+          pattern: /bg-(orange)-(100|200|300|400|500|600|700|800|900)/,
+          variants: ['hover', 'active'],
+        },
+        {
+          pattern: /border-(orange)-(100|200|300|400|500|600|700|800|900)/,
+          variants: ['focus'],
+        },
+        {
+          pattern: /ring-(orange)-(100|200|300|400|500|600|700|800|900)/,
+          variants: ['focus'],
+        },
+    ],
+
     theme: {
         extend: {
             fontFamily: {
@@ -17,13 +32,15 @@ module.exports = {
             // colors: {
             //     transparent: 'transparent',
             //     current: 'currentColor',
-            //     //amber: colors.amber,
             //     black: colors.black,
             //     blue: colors.blue,
             //     cyan: colors.cyan,
             //     emerald: colors.emerald,
             //     fuchsia: colors.fuchsia,
+            //     slate: colors.slate,
             //     gray: colors.gray,
+            //     neutral: colors.neutral,
+            //     stone: colors.stone,
             //     green: colors.green,
             //     indigo: colors.indigo,
             //     lime: colors.lime,
@@ -32,7 +49,7 @@ module.exports = {
             //     purple: colors.purple,
             //     red: colors.red,
             //     rose: colors.rose,
-            //     sky: colors.sky, //warn - As of Tailwind CSS v2.2, `lightBlue` has been renamed to `sky`.
+            //     sky: colors.sky,
             //     teal: colors.teal,
             //     violet: colors.violet,
             //     yellow: colors.amber,
