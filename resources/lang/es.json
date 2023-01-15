@@ -173,5 +173,17 @@
     "white": "blanco",
     "red": "rojo",
     "black": "negro",
-    "blue": "azul"
+    "blue": "azul",
+    "No record exists with the specified parameters.": "No existe ningún registro con los parámetros especificados.",
+    "Category": "Categoría",
+    "You have not added any items to the cart": "No tiene agregado ningun item en el carrito",
+    "Go to shopping cart": "Ir al carrito de compras",
+    "More information": "Más información",
+    "Shopping cart": "Carrito de compras",
+    "Add to shopping cart": "Agregar al carrito de compras",
+    "Available stock": "Stock disponible",
+    "Select a color": "Seleccionar un color",
+    "Select a size": "Seleccionar una talla",
+    "colour": "color",
+    "size": "talla"
 }

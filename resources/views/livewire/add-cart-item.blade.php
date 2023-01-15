@@ -1,6 +1,6 @@
 <div x-data>
     <p class="text-gray-700 mb-4">
-        <span class="font-semibold text-lg">Stock disponible:</span> {{ $quantity }}
+        <span class="font-semibold text-lg">@lang('Available stock'):</span> {{ $quantity }}
     </p>
 
     <div class="flex">
@@ -14,7 +14,7 @@
 
         <div class="flex-1">
             <x-button x-bind:disabled="!$wire.quantity" wire:click="addCartItem" wire:loading.attr="disabled" wire:target="addCartItem"
-                color="orange" class="w-full">Agregar al carrito de compras</x-button>
+                color="orange" class="w-full">@lang('Add to shopping cart')</x-button>
         </div>
     </div>
 </div>

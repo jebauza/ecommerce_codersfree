@@ -102,7 +102,7 @@
 
                                     <div class="mt-auto mb-6">
                                         <x-danger-link href="{{ route('products.show', $product) }}">
-                                            Más información
+                                            @lang('More information')
                                         </x-danger-link>
                                     </div>
                                 </div>

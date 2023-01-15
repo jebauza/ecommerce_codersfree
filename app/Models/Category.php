@@ -56,8 +56,8 @@ class Category extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function products(): HasManyThrough
+    public function products()
     {
-        return $this->hasManyThrough(Product::class, Subcategory::class);
+        return $this->hasManyThrough(Product::class, Subcategory::class, 'category_id', 'subcategory_id', 'id', 'id');
     }
 }

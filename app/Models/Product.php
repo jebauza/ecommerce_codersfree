@@ -10,8 +10,10 @@ use App\Models\Subcategory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class Product extends Model
 {
@@ -46,13 +48,36 @@ class Product extends Model
     }
 
     /**
+     * Method scopeSearch
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $search [explicite description]
+     */
+    public function scopeSearch($query, string $search = null)
+    {
+        if ($search) {
+            return $query->where('name', 'LIKE', "%$search%");
+        }
+    }
+
+    /**
      * Get the subcategory that owns the Product
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function subcategory(): BelongsTo
+    public function subcategory()
     {
         return $this->belongsTo(Subcategory::class, 'subcategory_id', 'id');
+    }
+
+    /**
+     * Get the category that owns the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOneThrough
+     */
+    public function category()
+    {
+        return $this->hasOneThrough(Category::class, SubCategory::class, 'id', 'id', 'subcategory_id', 'category_id');
     }
 
     /**
@@ -60,7 +85,7 @@ class Product extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function brand(): BelongsTo
+    public function brand()
     {
         return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
@@ -70,7 +95,7 @@ class Product extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function colors(): BelongsToMany
+    public function colors()
     {
         return $this->belongsToMany(Color::class, 'color_product', 'product_id', 'color_id')
                     ->withPivot('id','color_id','product_id','quantity')
@@ -82,13 +107,15 @@ class Product extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function sizes(): HasMany
+    public function sizes()
     {
         return $this->hasMany(Size::class, 'product_id', 'id');
     }
 
     /**
-     * Get all of the images product.
+     * Get all of the images for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function images()
     {

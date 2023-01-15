@@ -1,8 +1,8 @@
 <div x-data>
-    <p class="text-xl text-gray-700">Color:</p>
+    <p class="text-xl text-gray-700 capitalize">@lang('colour'):</p>
 
     <select wire:model="colorId" class="form-control w-full">
-        <option value="" selected disabled>Selecionar un color</option>
+        <option value="" selected disabled>@lang('Select a color')</option>
         @foreach ($colors as $color)
             <option value="{{ $color->id }}">{{ ucfirst(__($color->name)) }}</option>
         @endforeach
@@ -10,7 +10,7 @@
 
     @if($colorId)
         <p class="text-gray-700 mt-4">
-            <span class="font-semibold text-lg">Stock disponible:</span> {{ $quantity }}
+            <span class="font-semibold text-lg">@lang('Available stock'):</span> {{ $quantity }}
         </p>
     @endif
 
@@ -25,7 +25,7 @@
 
         <div class="flex-1">
             <x-button x-bind:disabled="!$wire.quantity" wire:click="addCartItem" wire:loading.attr="disabled" wire:target="addCartItem"
-                color="orange" class="w-full">Agregar al carrito de compras</x-button>
+                color="orange" class="w-full">@lang('Add to shopping cart')</x-button>
         </div>
     </div>
 </div>

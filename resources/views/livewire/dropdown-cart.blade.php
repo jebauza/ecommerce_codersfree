@@ -42,7 +42,7 @@
                 @empty
                     <li class="px-4 py-6">
                         <p class="text-center text-gray-700">
-                            No tiene agregado ningun item en el carrito
+                            @lang('You have not added any items to the cart')
                         </p>
                     </li>
                 @endforelse
@@ -50,9 +50,9 @@
 
             @if (Cart::count())
                 <div class="py-2 px-3">
-                    <p class="text-lg text-gray-700 mt-2 mb-3"><span class="font-bold">Total:</span> USD {{ Cart::subtotal() }}</p>
+                    <p class="text-lg text-gray-700 mt-2 mb-3"><span class="font-bold">Total: </span>USD {{ Cart::subtotal() }}</p>
 
-                    <x-button-link color="orange" class="w-full">Ir al carrito de compras</x-button-link>
+                    <x-button-link color="orange" class="w-full">@lang('Go to shopping cart')</x-button-link>
                 </div>
             @endif
 
