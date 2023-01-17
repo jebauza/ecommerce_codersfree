@@ -185,5 +185,6 @@
     "Select a color": "Seleccionar un color",
     "Select a size": "Seleccionar una talla",
     "colour": "color",
-    "size": "talla"
+    "size": "talla",
+    "No product matches those parameters": "Ningún producto coincide con esos parámetros"
 }
