@@ -186,5 +186,8 @@
     "Select a size": "Seleccionar una talla",
     "colour": "color",
     "size": "talla",
-    "No product matches those parameters": "Ningún producto coincide con esos parámetros"
+    "No product matches those parameters": "Ningún producto coincide con esos parámetros",
+    "shopping cart": "carro de compras",
+    "price": "precio",
+    "quantity": "cantidad"
 }

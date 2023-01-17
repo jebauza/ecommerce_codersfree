@@ -28,11 +28,11 @@
                                 <p>Cant: {{ $itemCart->qty }}</p>
 
                                 @isset($itemCart->options['color'])
-                                    <p class="mx-2">- Color: {{ ucfirst(__($itemCart->options['color']['name'])) }}</p>
+                                    <p class="mx-2 capitalize">- @lang('colour'): {{ ucfirst(__($itemCart->options['color']['name'])) }}</p>
                                 @endisset
 
                                 @isset($itemCart->options['size'])
-                                    <p class="mx-2">Talla: {{ ucfirst(__($itemCart->options['size']['name'])) }}</p>
+                                    <p class="mx-2 capitalize">@lang('size'): {{ ucfirst(__($itemCart->options['size']['name'])) }}</p>
                                 @endisset
                             </div>
 
