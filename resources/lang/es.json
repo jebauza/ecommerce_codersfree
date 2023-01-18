@@ -189,5 +189,9 @@
     "No product matches those parameters": "Ningún producto coincide con esos parámetros",
     "shopping cart": "carro de compras",
     "price": "precio",
-    "quantity": "cantidad"
+    "quantity": "cantidad",
+    "Delete shopping cart": "Borrar carrito de compras",
+    "Your cart is empty": "Tu carro de compra está vacío",
+    "Go to home": "Ir al inicio",
+    "continue": "continuar"
 }

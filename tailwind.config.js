@@ -11,15 +11,15 @@ module.exports = {
 
     safelist: [
         {
-          pattern: /bg-(orange)-(100|200|300|400|500|600|700|800|900)/,
+          pattern: /bg-(orange|red)-(100|200|300|400|500|600|700|800|900)/,
           variants: ['hover', 'active'],
         },
         {
-          pattern: /border-(orange)-(100|200|300|400|500|600|700|800|900)/,
+          pattern: /border-(orange|red)-(100|200|300|400|500|600|700|800|900)/,
           variants: ['focus'],
         },
         {
-          pattern: /ring-(orange)-(100|200|300|400|500|600|700|800|900)/,
+          pattern: /ring-(orange|red)-(100|200|300|400|500|600|700|800|900)/,
           variants: ['focus'],
         },
     ],
