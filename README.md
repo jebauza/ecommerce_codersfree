@@ -1,61 +1,63 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# ECOMMERCE-CODERFREE
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Comenzando 💪🚀
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Table of contents
+* [Pre-requisitos 📋](#pre-requisitos)
+* [Instalación 🔧](#instalación)
+* [Construido con 🛠️](#construido-con)
 
-## Learning Laravel
+### Pre-requisitos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+_Que cosas necesitas para poner en marcha el proyecto y como instalarlos_
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* GIT [Link](https://git-scm.com/downloads)
+* Entorno de servidor local, Ej: [Laragon](https://laragon.org/download/), [XAMPP](https://www.apachefriends.org/es/index.html) o [LAMPP](https://bitnami.com/stack/lamp/installer).
+* PHP Version ^8.1 [Link](https://www.php.net/downloads.php).
+* Manejador de dependencias de PHP [Composer_2.2.6](https://getcomposer.org/download/).
+* MariaDB: ^10.3.32 o Mysql: ^8.0.23 [link](https://mariadb.com/kb/en/mariadb-10332-release-notes/).
+* Node: v16.13.2 .
 
-## Laravel Sponsors
+### Instalación
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Paso a paso de lo que debes ejecutar para tener el proyecto ejecutandose
 
-### Premium Partners
+ 1. Clona el repositorio dentro de la carpeta de tu servidor con el siguiente comando:
+    ```
+    git clone https://github.com/jebauza/ecommerce_codersfree.git
+    ```
+ 2. Ingresa a la carpeta del repositorio
+    ```
+    cd ecommerce_codersfree
+    ```
+ 3. Instala las dependencias del proyecto
+    ```
+    composer install
+    ```
+ 4. Crea el archivo ".env" copiando la información del archivo "[.env.example](https://repositorios.artvisual.net/artvisual/zapatoferoz-back/-/blob/develop/.env.example)" y cambiar valores de su Base de datos.
+ 5. Genera la clave de la aplicación en laravel
+    ```
+    php artisan key:generate
+    ```
+ 6. Ejecute las migraciones
+    ```
+    php artisan migrate
+    ```
+ 7. Instala las dependencias front del proyecto
+    ```
+    npm install & npm run watch
+    ```
+ 8. Inicialice el servidor local
+    ```
+    php artisan serve
+    ```
+ 9. Listo, ya podrá visualizar e interactuar con el proyecto en local  😁
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+## Construido con
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* Framework de PHP [Laravel](https://laravel.com/docs/9.x).
+* Documento [link](https://codersfree.com/courses-status/crea-un-ecommerce-con-laravel-livewire-tailwind-y-alpine/slider-de-productos).

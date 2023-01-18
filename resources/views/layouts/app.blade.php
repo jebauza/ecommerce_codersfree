@@ -12,26 +12,42 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/appSass.css') }}">
+
+        {{-- Glider --}}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+        <style>
+            .glider {
+                scrollbar-width: none; // firefox
+            }
+
+            .glider::-webkit-scrollbar {
+                display: none; // webkit
+            }
+        </style>
+
+        {{-- FlexSlider --}}
+        <link rel="stylesheet" href="{{ asset('vendor/FlexSlider/flexslider.css') }}">
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+
+        {{-- Glider --}}
+        <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js" defer></script>
+
+        {{-- Jquery --}}
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+
+        {{-- FlexSlider --}}
+        <script src="{{ asset('vendor/FlexSlider/jquery.flexslider-min.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+            @livewire('navigation')
 
             <!-- Page Content -->
             <main>
@@ -42,5 +58,34 @@
         @stack('modals')
 
         @livewireScripts
+
+        <script>
+            function dropdown() {
+                return {
+                    open: false,
+                    openChangeTime: new Date(),
+                    show() {
+                        if (!this.open) {
+                            this.open = true;
+                            document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+                        } else {
+                            this.open = false;
+                            document.getElementsByTagName('html')[0].style.overflow = 'auto';
+                        }
+
+                        this.openChangeTime = Date.now();
+                    },
+                    close() {
+                        if (Math.abs(Date.now() - this.openChangeTime) > 10) {
+                            this.open = false;
+                            document.getElementsByTagName('html')[0].style.overflow = 'auto';
+                            this.openChangeTime = Date.now();
+                        }
+                    }
+                }
+            }
+        </script>
+
+        @stack('script')
     </body>
 </html>
