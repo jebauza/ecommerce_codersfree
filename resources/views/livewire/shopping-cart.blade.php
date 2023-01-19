@@ -90,7 +90,9 @@
                 </div>
 
                 <div>
-                    <x-button-link class="uppercase">@lang('continue')</x-button-link>
+                    <x-button-link href="{{ route('orders.create') }}" class="uppercase">
+                        @lang('continue')
+                    </x-button-link>
                 </div>
             </div>
         </div>
