@@ -201,5 +201,11 @@ return [
         'code'                  => 'código',
         'startDate'             => 'fecha de inicio',
         'endDate'               => 'fecha final',
+        'contact'               => 'contacto',
+        'departmentId'          => 'departamento',
+        'pickupType'            => 'tipo de envío',
+        'cityId'                => 'ciudad',
+        'districtId'            => 'distrito',
+        'references'            => 'referencias',
     ],
 ];

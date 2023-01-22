@@ -193,5 +193,20 @@
     "Delete shopping cart": "Borrar carrito de compras",
     "Your cart is empty": "Tu carro de compra está vacío",
     "Go to home": "Ir al inicio",
-    "continue": "continuar"
+    "continue": "continuar",
+    "Contact name": "Nombre de contacto",
+    "Enter the name of the person who will receive the product": "Ingrese el nombre de la persona que recibirá el producto",
+    "Contact phone": "Teléfono de contacto",
+    "Enter a contact phone number": "Ingrese un número de teléfono de contacto",
+    "shipments": "shipments",
+    "Home delivery": "Envío a domicilio",
+    "department": "departamento",
+    "Select a :item": "Seleccione un :item",
+    "city": "ciudad",
+    "district": "distrito",
+    "address": "dirección",
+    "reference": "referencia",
+    "delivery": "entrega",
+    "free": "gratis",
+    "shipping": "envío"
 }
