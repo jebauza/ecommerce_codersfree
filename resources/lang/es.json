@@ -208,5 +208,11 @@
     "reference": "referencia",
     "delivery": "entrega",
     "free": "gratis",
-    "shipping": "envío"
+    "shipping": "envío",
+    "Products must be picked up in store": "Los productos deben ser recogidos en tienda",
+    "The products will be sent to:": "Los productos serán enviados a:",
+    "Contact information": "Datos de contacto",
+    "Order number": "Número de pedido",
+    "order": "pedido",
+    "resume": "resumen"
 }

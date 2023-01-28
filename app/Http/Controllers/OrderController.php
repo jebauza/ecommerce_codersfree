@@ -11,13 +11,16 @@ class OrderController extends Controller
      * Method payment
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Models\Order $order
+     * @param  int $order
      *
      * @return \Illuminate\Http\Response
      */
-    public function payment(Request $request, Order $order)
+    public function payment(Request $request, int $orderId)
     {
-        return view('orders.payment', compact('order'));
+        $order = Order::with('department','city','district')->findOrfail($orderId);
+        $items = json_decode($order->content);
+
+        return view('orders.payment', compact('order','items'));
     }
 
     /**
