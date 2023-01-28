@@ -33,7 +33,11 @@ Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 Route::prefix('orders')->group(function () {
     Route::get('create', CreateOrder::class)->middleware('auth')->name('orders.create');
     Route::get('{order}/payment', [OrderController::class, 'payment'])->middleware('auth')->name('orders.payment');
+    Route::get('{order}/show', [OrderController::class, 'show'])->middleware('auth')->name('orders.show');
+    Route::get('{order}/pay', [OrderController::class, 'pay'])->middleware('auth')->name('orders.pay');
 });
+
+Route::post('webhooks', 'UserProfileController@show')->name('profile');
 
 // Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
 //     Route::get('/dashboard', function () {

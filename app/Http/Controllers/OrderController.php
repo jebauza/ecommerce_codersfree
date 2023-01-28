@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
 {
@@ -11,7 +12,7 @@ class OrderController extends Controller
      * Method payment
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  int $order
+     * @param  int $orderId
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,6 +22,45 @@ class OrderController extends Controller
         $items = json_decode($order->content);
 
         return view('orders.payment', compact('order','items'));
+    }
+
+    /**
+     * Display order.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $orderId
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request, int $orderId)
+    {
+        $order = Order::with('department','city','district')->findOrfail($orderId);
+
+        return view('orders.show', compact('order'));
+    }
+
+    /**
+     * Display order.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  Order $order
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function pay(Request $request, Order $order)
+    {
+        $paymentId = $request->get('payment_id');
+        $accessToken = config('services.mercadopago.access_token');
+
+        $response = json_decode(Http::get("https://api.mercadopago.com/v1/payments/$paymentId?access_token=$accessToken"));
+        $status = $response->status;
+
+        if ($status == 'approved') {
+            $order->status = Order::STATUS_RECEIVED;
+            $order->save();
+        }
+
+        return redirect()->route('orders.show', $order);
     }
 
     /**
@@ -50,17 +90,6 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
     {
         //
     }
