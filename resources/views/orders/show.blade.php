@@ -1,10 +1,40 @@
 <x-app-layout>
     <div class="max-w-5xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
 
-        <div class="px-12 py-8 mb-6 bg-white rounded-lg shadow-lg">
-            <div class="flex items-center">
-                <div class="flex items-center justify-center w-12 h-12 bg-blue-400 rounded-full">
+        <div class="flex items-center px-12 py-8 mb-6 bg-white rounded-lg shadow-lg">
+            <div class="relative">
+                <div class="flex items-center justify-center w-12 h-12 rounded-full
+                    {{ in_array($order->status, [App\Models\Order::STATUS_PENDING, App\Models\Order::STATUS_ANNULED, App\Models\Order::STATUS_CANCELED]) ? 'bg-gray-400' : 'bg-blue-400' }}">
                     <i class="text-white fas fa-check"></i>
+                </div>
+
+                <div class="absolute -left-1.5 mt-0.5">
+                    <p>Recibido</p>
+                </div>
+            </div>
+
+            <div class="flex-1 h-1 mx-2 {{ in_array($order->status, [App\Models\Order::STATUS_SHIPPED, App\Models\Order::STATUS_COMPLETED]) ? 'bg-blue-400' : 'bg-gray-400' }}"></div>
+
+            <div class="relative">
+                <div class="flex items-center justify-center w-12 h-12 rounded-full
+                    {{ in_array($order->status, [App\Models\Order::STATUS_SHIPPED, App\Models\Order::STATUS_COMPLETED]) ? 'bg-blue-400' : 'bg-gray-400' }}">
+                    <i class="text-white fas fa-truck"></i>
+                </div>
+
+                <div class="absolute -left-1 mt-0.5">
+                    <p>Enviado</p>
+                </div>
+            </div>
+
+            <div class="flex-1 h-1 mx-2 {{ $order->status == App\Models\Order::STATUS_COMPLETED ? 'bg-blue-400' : 'bg-gray-400' }}"></div>
+
+            <div class="relative">
+                <div class="flex items-center justify-center w-12 h-12 rounded-full {{ $order->status == App\Models\Order::STATUS_COMPLETED ? 'bg-blue-400' : 'bg-gray-400' }}">
+                    <i class="text-white fas fa-check"></i>
+                </div>
+
+                <div class="absolute -left-1.5 mt-0.5">
+                    <p>Entregado</p>
                 </div>
             </div>
         </div>

@@ -19,6 +19,8 @@ class OrderController extends Controller
     public function show(Request $request, int $orderId)
     {
         $order = Order::with('department','city','district')->findOrfail($orderId);
+        $this->authorize('author', $order);
+
         $items = json_decode($order->content);
 
         return view('orders.show', compact('order', 'items'));
@@ -34,6 +36,8 @@ class OrderController extends Controller
      */
     public function pay(Request $request, Order $order)
     {
+        $this->authorize('author', $order);
+        
         $paymentId = $request->get('payment_id');
         $accessToken = config('services.mercadopago.access_token');
 
