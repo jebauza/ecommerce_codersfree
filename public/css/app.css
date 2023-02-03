@@ -1008,11 +1008,11 @@ select {
 .col-span-3 {
   grid-column: span 3 / span 3;
 }
-.col-span-1 {
-  grid-column: span 1 / span 1;
-}
 .col-span-2 {
   grid-column: span 2 / span 2;
+}
+.col-span-1 {
+  grid-column: span 1 / span 1;
 }
 .mx-auto {
   margin-left: auto;
@@ -1266,6 +1266,9 @@ select {
 .max-w-6xl {
   max-width: 72rem;
 }
+.max-w-5xl {
+  max-width: 64rem;
+}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1350,11 +1353,11 @@ select {
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
 .grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
@@ -1693,6 +1696,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
+.bg-blue-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
 }
@@ -1787,6 +1794,10 @@ select {
 .px-16 {
   padding-left: 4rem;
   padding-right: 4rem;
+}
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 .pt-6 {
   padding-top: 1.5rem;

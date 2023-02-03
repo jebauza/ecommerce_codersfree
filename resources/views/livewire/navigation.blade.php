@@ -1,4 +1,4 @@
-<header class="sticky top-0 z-50 bg-gray-700" x-data="dropdown()">
+<header class="sticky top-0 bg-gray-700" style="z-index: 900;" x-data="dropdown()">
     <div class="container flex items-center justify-between h-16 md:justify-start">
         <a x-on:click="show()" :class="{'bg-opacity-100 text-red-500': open}"
         class="flex flex-col items-center justify-center order-last h-full px-6 font-semibold text-white bg-white bg-opacity-25 cursor-pointer md:order-first md:px-4">

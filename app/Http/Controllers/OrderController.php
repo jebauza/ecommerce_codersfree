@@ -9,22 +9,6 @@ use Illuminate\Support\Facades\Http;
 class OrderController extends Controller
 {
     /**
-     * Method payment
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $orderId
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function payment(Request $request, int $orderId)
-    {
-        $order = Order::with('department','city','district')->findOrfail($orderId);
-        $items = json_decode($order->content);
-
-        return view('orders.payment', compact('order','items'));
-    }
-
-    /**
      * Display order.
      *
      * @param  \Illuminate\Http\Request $request
@@ -35,8 +19,9 @@ class OrderController extends Controller
     public function show(Request $request, int $orderId)
     {
         $order = Order::with('department','city','district')->findOrfail($orderId);
+        $items = json_decode($order->content);
 
-        return view('orders.show', compact('order'));
+        return view('orders.show', compact('order', 'items'));
     }
 
     /**
