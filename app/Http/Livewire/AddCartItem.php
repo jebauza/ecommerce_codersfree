@@ -52,7 +52,7 @@ class AddCartItem extends Component
             'price' => $this->product->price,
             'weight' => 0,
             'options' => [
-                'image' => ($imageFirst = $this->product->images->first()) ? Storage::url($imageFirst->url) : null,
+                'image' => ($imageFirst = $this->product->images->first()) ? $imageFirst->link : null,
             ]
         ]);
 

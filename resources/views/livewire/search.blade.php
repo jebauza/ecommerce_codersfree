@@ -9,15 +9,15 @@
     </form>
 
     <div class="absolute w-full" :class="{ 'hidden' : !$wire.open }" @click.away="$wire.open = false">
-        <div class="bg-white rounded-lg shadow mt-1">
+        <div class="mt-1 bg-white rounded-lg shadow">
             <div class="px-4 py-3 space-y-1">
                 @forelse ($products as $product)
                     <a href="{{ route('products.show', $product) }}" class="flex">
-                        <img class="w-16 h-12 object-cover" src="{{ Storage::url($product->images->first()->url) }}" alt="">
+                        <img class="object-cover w-16 h-12" src="{{ $product->images->first()->url }}" alt="">
 
                         <div class="ml-4 text-gray-700">
                             <p class="text-lg font-semibold leading-5">{{ $product->name }}</p>
-                            <p>@lang('Category'): {{ $product->category->name }}</p>
+                            <p>@capitalizeLang('category'): {{ $product->category->name }}</p>
                         </div>
                     </a>
                 @empty

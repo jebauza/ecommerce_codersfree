@@ -91,7 +91,7 @@
     "API tokens allow third-party services to authenticate with our application on your behalf.": "Los tokens de API permiten que los servicios de terceros se autentiquen con nuestra aplicación en su nombre.",
     "Add Team Member": "Agregar miembro al equipo",
     "Add a new team member to your team, allowing them to collaborate with you.": "Agregue un nuevo miembro a su equipo, lo que le permitirá colaborar con usted.",
-    "Add": "Agregar",
+    "add": "agregar",
     "Added.": "Agregado.",
     "All of the people that are part of this team.": "Todas las personas que forman parte de este equipo.",
     "Are you sure you want to delete this team? Once a team is deleted, all of its resources and data will be permanently deleted.": "¿Estás seguro de que deseas eliminar este equipo? Una vez que se elimina un equipo, todos sus recursos y datos se eliminarán de forma permanente.",
@@ -175,7 +175,7 @@
     "black": "negro",
     "blue": "azul",
     "No record exists with the specified parameters.": "No existe ningún registro con los parámetros especificados.",
-    "Category": "Categoría",
+    "category": "categoría",
     "You have not added any items to the cart": "No tiene agregado ningun item en el carrito",
     "Go to shopping cart": "Ir al carrito de compras",
     "More information": "Más información",
@@ -223,5 +223,7 @@
     "canceled": "cancelado",
     "Recent orders": "Órdenes recientes",
     "You have :count orders pending payment": "Usted tiene :count pedidos pendientes de pago",
-    "Go pay": "Ir a pagar"
+    "Go pay": "Ir a pagar",
+    "administrator": "administrador",
+    "status": "estado"
 }

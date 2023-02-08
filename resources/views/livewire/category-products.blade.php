@@ -6,7 +6,7 @@
                     <li class="bg-white rounded-lg shadow {{ $loop->last ? '' : 'sm:mr-4' }}">
                         <article>
                             <figure>
-                                <img class="object-cover object-center w-full h-48" src="{{ Storage::url($product->images->first()->url) }}" alt="">
+                                <img class="object-cover object-center w-full h-48" src="{{ $product->images->first()->link }}" alt="">
                             </figure>
 
                             <div class="px-6 py-4">
