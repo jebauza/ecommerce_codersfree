@@ -999,6 +999,18 @@ select {
 .-left-1 {
   left: -0.25rem;
 }
+.-left-2 {
+  left: -0.5rem;
+}
+.-left-3 {
+  left: -0.75rem;
+}
+.-left-4 {
+  left: -1rem;
+}
+.-left-5 {
+  left: -1.25rem;
+}
 .z-0 {
   z-index: 0;
 }

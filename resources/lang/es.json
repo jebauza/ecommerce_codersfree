@@ -221,5 +221,7 @@
     "senting": "enviando",
     "completed": "completado",
     "canceled": "cancelado",
-    "Recent orders": "Órdenes recientes"
+    "Recent orders": "Órdenes recientes",
+    "You have :count orders pending payment": "Usted tiene :count pedidos pendientes de pago",
+    "Go pay": "Ir a pagar"
 }

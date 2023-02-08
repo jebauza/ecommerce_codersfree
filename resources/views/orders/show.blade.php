@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="absolute -left-1.5 mt-0.5">
-                    <p>Recibido</p>
+                    <p>@capitalizeLang('received')</p>
                 </div>
             </div>
 
@@ -22,29 +22,36 @@
                 </div>
 
                 <div class="absolute -left-1 mt-0.5">
-                    <p>Enviado</p>
+                    <p>@capitalizeLang('senting')</p>
                 </div>
             </div>
 
             <div class="flex-1 h-1 mx-2 {{ $order->status == App\Models\Order::STATUS_COMPLETED ? 'bg-blue-400' : 'bg-gray-400' }}"></div>
 
             <div class="relative">
-                <div class="flex items-center justify-center w-12 h-12 rounded-full {{ $order->status == App\Models\Order::STATUS_COMPLETED ? 'bg-blue-400' : 'bg-gray-400' }}">
+                <div class="flex items-center justify-center w-12 h-12 rounded-full
+                    {{ $order->status == App\Models\Order::STATUS_COMPLETED ? 'bg-blue-400' : 'bg-gray-400' }}">
                     <i class="text-white fas fa-check"></i>
                 </div>
 
-                <div class="absolute -left-1.5 mt-0.5">
-                    <p>Entregado</p>
+                <div class="absolute -left-5 mt-0.5">
+                    <p>@capitalizeLang('completed')</p>
                 </div>
             </div>
         </div>
 
 
 
-        <div class="px-6 py-4 mb-6 bg-white rounded-lg shadow-lg">
+        <div class="flex items-center px-6 py-4 mb-6 bg-white rounded-lg shadow-lg">
             <p class="text-gray-700 uppercase">
                 <span class="font-semibold">@lang('Order number'):</span> {{ $order->id }}
             </p>
+
+            @if($order->status == App\Models\Order::STATUS_PENDING)
+                <x-button-link class="ml-auto" href="{{ route('orders.payment', $order) }}">
+                    @lang('Go pay')
+                </x-button-link>
+            @endif
         </div>
 
         <div class="p-6 mb-6 bg-white rounded-lg shadow-lg">
@@ -94,7 +101,7 @@
                                         <h1 class="font-bold">{{ $item->name }}</h1>
                                         <div class="flex text-xs">
                                             @isset($item->options->color)
-                                                {{ ucfirst(__('colour')) }}: @lang($item->options->color->name)
+                                                @capitalizeLang('colour'): @lang($item->options->color->name)
                                             @endisset
 
                                             @isset($item->options->size)
