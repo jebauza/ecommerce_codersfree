@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Helpers\Utils;
 use App\Models\Order;
 use Livewire\Component;
 use App\Models\Department;
@@ -91,6 +92,10 @@ class CreateOrder extends Component
             'address' => !empty($this->address) ? $this->address : null,
             'references' => !empty($this->references) ? $this->references : null,
         ]);
+
+        foreach (Cart::content() as $item) {
+            Utils::discount($item);
+        }
 
         Cart::destroy();
 
