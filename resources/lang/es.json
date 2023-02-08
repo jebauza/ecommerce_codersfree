@@ -214,5 +214,12 @@
     "Contact information": "Datos de contacto",
     "Order number": "Número de pedido",
     "order": "pedido",
-    "resume": "resumen"
+    "resume": "resumen",
+    "My orders": "Mis pedidos",
+    "pending": "pendiente",
+    "received": "recibido",
+    "senting": "enviando",
+    "completed": "completado",
+    "canceled": "cancelado",
+    "Recent orders": "Órdenes recientes"
 }

@@ -27,6 +27,72 @@ class Order extends Model
     const PICKUP_STORE = 'store';
 
     /**
+     * Scope a query to only include pending orders.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopePending($query)
+    {
+        $query->where('status', self::STATUS_PENDING);
+    }
+
+    /**
+     * Scope a query to only include received orders.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeReceived($query)
+    {
+        $query->where('status', self::STATUS_RECEIVED);
+    }
+
+    /**
+     * Scope a query to only include shipped orders.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeShipped($query)
+    {
+        $query->where('status', self::STATUS_SHIPPED);
+    }
+
+    /**
+     * Scope a query to only include completed orders.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeCompleted($query)
+    {
+        $query->where('status', self::STATUS_COMPLETED);
+    }
+
+    /**
+     * Scope a query to only include annuled orders.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeAnnuled($query)
+    {
+        $query->where('status', self::STATUS_ANNULED);
+    }
+
+    /**
+     * Scope a query to only include canceled orders.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeCanceled($query)
+    {
+        $query->where('status', self::STATUS_CANCELED);
+    }
+
+    /**
      * Get the department that owns the Order
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

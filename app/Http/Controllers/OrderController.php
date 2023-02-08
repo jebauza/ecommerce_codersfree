@@ -5,9 +5,37 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Database\Eloquent\Builder;
 
 class OrderController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        $countPending = auth()->user()->orders()->pending()->count();
+        $countReceived = auth()->user()->orders()->received()->count();
+        $countShipped = auth()->user()->orders()->shipped()->count();
+        $countCompleted = auth()->user()->orders()->completed()->count();
+        $countCanceled = auth()->user()->orders()
+                                        ->annuled()
+                                        ->orWhere(function (Builder $query) {
+                                            return $query->canceled();
+                                        })
+                                        ->count();
+
+        $orders = auth()->user()->orders()
+                                ->when($request->status, function ($query, $status) {
+                                    return $query->where('status', $status);
+                                })
+                                ->get();
+
+        return view('orders.index', compact('orders','countPending','countReceived','countShipped','countCompleted','countCanceled'));
+    }
+
     /**
      * Display order.
      *
@@ -37,7 +65,7 @@ class OrderController extends Controller
     public function pay(Request $request, Order $order)
     {
         $this->authorize('author', $order);
-        
+
         $paymentId = $request->get('payment_id');
         $accessToken = config('services.mercadopago.access_token');
 
@@ -50,16 +78,6 @@ class OrderController extends Controller
         }
 
         return redirect()->route('orders.show', $order);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
     }
 
     /**
