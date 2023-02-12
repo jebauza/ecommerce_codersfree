@@ -1023,9 +1023,6 @@ select {
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
-.m-auto {
-  margin: auto;
-}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1406,12 +1403,6 @@ select {
 }
 .flex-wrap {
   flex-wrap: wrap;
-}
-.place-items-end {
-  place-items: end;
-}
-.items-end {
-  align-items: flex-end;
 }
 .items-center {
   align-items: center;

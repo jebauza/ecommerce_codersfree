@@ -25,7 +25,8 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss'),
     ])
     .sass('resources/sass/adminSass.scss', 'public/css/adminSass.css')
-    .js('resources/js/admin/products/productCreateAlpine.js', 'public/js/admin/products');
+    .js('resources/js/admin/products/productCreateAlpine.js', 'public/js/admin/products')
+    .js('resources/js/admin/products/productEditAlpine.js', 'public/js/admin/products');
 
 if (mix.inProduction()) {
     mix.version();
