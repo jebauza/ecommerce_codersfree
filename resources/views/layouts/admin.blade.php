@@ -14,37 +14,16 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/appSass.css') }}">
-
-        {{-- Glider --}}
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
-        <style>
-            .glider {
-                scrollbar-width: none; // firefox
-            }
-
-            .glider::-webkit-scrollbar {
-                display: none; // webkit
-            }
-        </style>
-
-        {{-- FlexSlider --}}
-        <link rel="stylesheet" href="{{ asset('vendor/FlexSlider/flexslider.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/admin.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/adminSass.css') }}">
 
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ mix('js/admin/admin.js') }}" defer></script>
 
-        {{-- Glider --}}
-        <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js" defer></script>
-
-        {{-- Jquery --}}
-        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-
-        {{-- FlexSlider --}}
-        <script src="{{ asset('vendor/FlexSlider/jquery.flexslider-min.js') }}" defer></script>
+        {{-- Ckeditor5 --}}
+        {{-- <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script> --}}
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -70,32 +49,6 @@
 
         @livewireScripts
 
-        <script>
-            function dropdown() {
-                return {
-                    open: false,
-                    openChangeTime: new Date(),
-                    show() {
-                        if (!this.open) {
-                            this.open = true;
-                            document.getElementsByTagName('html')[0].style.overflow = 'hidden';
-                        } else {
-                            this.open = false;
-                            document.getElementsByTagName('html')[0].style.overflow = 'auto';
-                        }
-
-                        this.openChangeTime = Date.now();
-                    },
-                    close() {
-                        if (Math.abs(Date.now() - this.openChangeTime) > 10) {
-                            this.open = false;
-                            document.getElementsByTagName('html')[0].style.overflow = 'auto';
-                            this.openChangeTime = Date.now();
-                        }
-                    }
-                }
-            }
-        </script>
 
         @stack('script')
     </body>

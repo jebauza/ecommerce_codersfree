@@ -16,7 +16,16 @@ mix.js('resources/js/app.js', 'public/js')
         require('postcss-import'),
         require('tailwindcss'),
     ])
-    .sass('resources/sass/appSass.scss', 'public/css');
+    .sass('resources/sass/appSass.scss', 'public/css')
+
+    // admin panel
+    .js('resources/js/admin/admin.js', 'public/js/admin')
+    .postCss('resources/css/admin.css', 'public/css', [
+        require('postcss-import'),
+        require('tailwindcss'),
+    ])
+    .sass('resources/sass/adminSass.scss', 'public/css/adminSass.css')
+    .js('resources/js/admin/products/productCreateAlpine.js', 'public/js/admin/products');
 
 if (mix.inProduction()) {
     mix.version();

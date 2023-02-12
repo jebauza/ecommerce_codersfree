@@ -79,7 +79,7 @@
     "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.":"Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán permanentemente. Antes de eliminar su cuenta, descargue cualquier dato o información que desee conservar.",
     "Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.":"¿Estás seguro de que deseas eliminar tu cuenta? Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán permanentemente. Ingrese su contraseña para confirmar que desea eliminar permanentemente su cuenta.",
     "Delete Account":"Borrar cuenta",
-    "name":"Nombre",
+    "name":"nombre",
     "Please wait before retrying.":"Espere antes de volver a intentarlo.",
     "We have emailed your password reset link!":"¡Hemos enviado su enlace de restablecimiento de contraseña por correo electrónico!",
     "Your password has been reset!":"¡Tu contraseña ha sido restablecida!",
@@ -225,5 +225,11 @@
     "You have :count orders pending payment": "Usted tiene :count pedidos pendientes de pago",
     "Go pay": "Ir a pagar",
     "administrator": "administrador",
-    "status": "estado"
+    "status": "estado",
+    "element": "elemento",
+    "Fill in this information to create :element": "Complete esta información para crear :element",
+    "product": "producto",
+    "Write :attribute": "Escriba :attribute",
+    "subcategories": "subcategorías",
+    "categories": "categorías"
 }

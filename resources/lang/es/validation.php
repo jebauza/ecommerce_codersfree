@@ -207,5 +207,13 @@ return [
         'cityId'                => 'ciudad',
         'districtId'            => 'distrito',
         'references'            => 'referencias',
+        'categoryId'            => 'categoría',
+        'category'              => 'categoría',
+        'subcategoryId'         => 'subcategoría',
+        'subcategory'           => 'subcategoría',
+        'brandId'               => 'marca',
+        'brand'                 => 'marca',
+        'quantity'              => 'cantidad',
+        'description'           => 'descripción',
     ],
 ];
