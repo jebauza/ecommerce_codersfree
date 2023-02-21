@@ -90,6 +90,6 @@ class CreateProduct extends Component
         $newProduct = new Product($validatedData);
         $newProduct->save();
 
-        return redirect()->route('admin.products.edit', $newProduct);
+        return redirect()->route('admin.home')->with('success', 'Product successfully added.');
     }
 }
