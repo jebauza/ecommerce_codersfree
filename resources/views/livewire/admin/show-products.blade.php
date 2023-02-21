@@ -97,21 +97,4 @@
         </x-table-responsive>
     </div>
 
-    @push('script')
-        <script>
-
-            window.addEventListener('load', function() {
-                @if (Session::get('success'))
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: '{{ Session::get('success') }}',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                @endif
-            });
-
-        </script>
-    @endpush
 </div>

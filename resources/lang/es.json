@@ -158,6 +158,8 @@
     "of": "de",
     "results": "resultados",
     "Go to page :page": "Ir a la página :page",
+    "The :element was created successfully.": "El :element fue creado con éxito.",
+    "The :element was edited successfully.": "El :element fue editado con éxito.",
 
     "The given data was invalid.": "Los datos proporcionados no son válidos.",
     "Not Found.": "No Encontrado.",

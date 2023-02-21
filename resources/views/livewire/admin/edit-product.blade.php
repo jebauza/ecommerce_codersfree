@@ -93,9 +93,9 @@
         @endif
 
         <div class="flex items-center justify-end">
-            <x-jet-action-message class="mr-3" on="saved">
+            {{-- <x-jet-action-message class="mr-3" on="saved">
                 Actualizado
-            </x-jet-action-message>
+            </x-jet-action-message> --}}
 
             <x-jet-button wire:click="saveProduct" wire:loading.attr="disabled" wire:target="saveProduct">
                 @lang('Save')

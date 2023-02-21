@@ -8,9 +8,12 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class EditProduct extends Component
 {
+    use LivewireAlert;
+
     public $product;
     public $categories;
     public $subcategories = [];
@@ -111,6 +114,7 @@ class EditProduct extends Component
         $this->product->slug = $validatedData['slug'];
         $this->product->save();
 
-        $this->emit('saved');
+        $this->alert('success', __('The :element was edited successfully.', ['element'=>__('product')]));
+        // $this->emit('saved');
     }
 }

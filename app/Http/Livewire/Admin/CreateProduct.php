@@ -2,15 +2,18 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
-use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class CreateProduct extends Component
 {
+    use LivewireAlert;
+
     public $categories;
     public $subcategories = [];
     public $brands = [];
@@ -90,6 +93,6 @@ class CreateProduct extends Component
         $newProduct = new Product($validatedData);
         $newProduct->save();
 
-        return redirect()->route('admin.home')->with('success', 'Product successfully added.');
+        $this->flash('success', __('The :element was created successfully.', ['element'=>__('product')]), [], route('admin.home'));
     }
 }
