@@ -108,7 +108,7 @@
     "Created.": "Creado.",
     "Delete API Token": "Eliminar Token de API",
     "Delete Team": "Eliminar equipo",
-    "Delete": "Eliminar",
+    "delete": "eliminar",
     "For your security, please confirm your password to continue.": "Por su seguridad, confirme su contraseña para continuar.",
     "Forgot Your Password?": "¿Olvidaste tu contraseña?",
     "Last used": "Usado por última vez",
@@ -233,5 +233,8 @@
     "product": "producto",
     "Write :attribute": "Escriba :attribute",
     "subcategories": "subcategorías",
-    "categories": "categorías"
+    "categories": "categorías",
+    "edit": "editar",
+    "update": "actualizar",
+    "cancel": "cancelar"
 }

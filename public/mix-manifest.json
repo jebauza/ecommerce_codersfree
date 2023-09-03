@@ -3,8 +3,8 @@
     "/js/admin/admin.js": "/js/admin/admin.js",
     "/js/admin/products/productCreateAlpine.js": "/js/admin/products/productCreateAlpine.js",
     "/js/admin/products/productEditAlpine.js": "/js/admin/products/productEditAlpine.js",
+    "/css/adminSass.css": "/css/adminSass.css",
     "/css/appSass.css": "/css/appSass.css",
     "/css/admin.css": "/css/admin.css",
-    "/css/app.css": "/css/app.css",
-    "/css/adminSass.css": "/css/adminSass.css"
+    "/css/app.css": "/css/app.css"
 }

@@ -3,7 +3,7 @@
 
         {{-- Color --}}
         <div class="mb-6">
-            <x-jet-label class="font-bold">Color</x-jet-label>
+            <x-jet-label class="font-bold">@capitalizeLang('colour')</x-jet-label>
             <div class="grid grid-cols-6 gap-6">
                 @foreach($colors as $color)
                     <label>
@@ -20,14 +20,14 @@
 
         {{-- Quantity --}}
         <div>
-            <x-jet-label class="font-bold">Cantidad</x-jet-label>
+            <x-jet-label class="font-bold">@capitalizeLang('quantity')</x-jet-label>
             <x-jet-input wire:model.defer="quantity" type="number" placeholder="Ingrese una cantidad" class="w-full"/>
             <x-jet-input-error for="quantity" />
         </div>
 
         <div class="flex items-center justify-end mt-4">
             <x-jet-button wire:click="saveColor" wire:loading.attr="disabled" wire:target="saveColor">
-                Agregar
+                @capitalizeLang('add')
             </x-jet-button>
         </div>
     </div>
@@ -36,8 +36,8 @@
         <table>
             <thead>
                 <tr>
-                    <th class="w-1/3 px-4 py-2">Color</th>
-                    <th class="w-1/3 px-4 py-2">Cantidad</th>
+                    <th class="w-1/3 px-4 py-2">@capitalizeLang('colour')</th>
+                    <th class="w-1/3 px-4 py-2">@capitalizeLang('quantity')</th>
                     <th class="w-1/3 px-4 py-2"></th>
                 </tr>
             </thead>
@@ -47,12 +47,42 @@
                         <td class="px-4 py-2 capitalize">{{ __($productColor->name) }}</td>
                         <td class="px-4 py-2 capitalize">{{ $productColor->pivot->quantity }} unidades</td>
                         <td class="flex px-4 py-2">
-                            <x-jet-secondary-button class="ml-auto mr-2">Actualizar</x-jet-secondary-button>
-                            <x-jet-danger-button>Eliminar</x-jet-danger-button>
+                            <x-jet-secondary-button wire:click="showModal({{ $productColor->id }})" class="ml-auto mr-2">@capitalizeLang('update')</x-jet-secondary-button>
+                            <x-jet-danger-button>@capitalizeLang('delete')</x-jet-danger-button>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+
+    <x-jet-dialog-modal wire:model="modalOpen">
+        <x-slot name="title">
+            @capitalizeLang('edit')
+        </x-slot>
+
+        <x-slot name="content">
+            <div class="mb-4">
+                <x-jet-label class="font-bold">@capitalizeLang('colour')</x-jet-label>
+
+                <select wire:model="modalColorId" class="w-full form-control">
+                    <option value="">@lang('Select a color')</option>
+                    @foreach($colors as $color)
+                        <option value="{{ $color->id }}">@capitalizeLang($color->name)</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div>
+                <x-jet-label class="font-bold">@capitalizeLang('quantity')</x-jet-label>
+
+                <x-jet-input wire:model="modalQuantity" class="w-full" type="number" placeholder="Ingrese una cantidad"></x-jet-input>
+            </div>
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$set('modalOpen', false)" class="mr-1">@capitalizeLang('cancel')</x-jet-secondary-button>
+            <x-jet-button wire:click="updateColor()">@capitalizeLang('update')</x-jet-button>
+        </x-slot>
+    </x-jet-dialog-modal>
 </div>
