@@ -215,5 +215,6 @@ return [
         'brand'                 => 'marca',
         'quantity'              => 'cantidad',
         'description'           => 'descripción',
+        'colorId'               => 'color',
     ],
 ];

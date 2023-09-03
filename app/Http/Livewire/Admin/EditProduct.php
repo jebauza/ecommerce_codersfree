@@ -112,6 +112,7 @@ class EditProduct extends Component
         ]);
 
         $this->product->slug = $validatedData['slug'];
+        $this->product->quantity = ($this->product->quantity == '' ? null : $this->product->quantity);
         $this->product->save();
 
         $this->alert('success', __('The :element was edited successfully.', ['element'=>__('product')]));
