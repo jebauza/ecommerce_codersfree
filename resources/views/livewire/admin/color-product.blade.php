@@ -43,12 +43,19 @@
             </thead>
             <tbody>
                 @foreach($productColors as $key => $productColor)
-                    <tr>
+                    <tr wire:key="productColor_{{ $productColor->id }}">
                         <td class="px-4 py-2 capitalize">{{ __($productColor->name) }}</td>
                         <td class="px-4 py-2 capitalize">{{ $productColor->pivot->quantity }} unidades</td>
                         <td class="flex px-4 py-2">
-                            <x-jet-secondary-button wire:click="showModal({{ $productColor->id }})" class="ml-auto mr-2">@capitalizeLang('update')</x-jet-secondary-button>
-                            <x-jet-danger-button>@capitalizeLang('delete')</x-jet-danger-button>
+                            <x-jet-secondary-button class="ml-auto mr-2"
+                                wire:click="showModal({{ $productColor->id }})"
+                                wire:loading.attr="disabled"
+                                wire:target="showModal({{ $productColor->id }})">
+                                @capitalizeLang('update')
+                            </x-jet-secondary-button>
+                            <x-jet-danger-button wire:click="$emit('askDeleteColor', {{ $productColor->id }})">
+                                @capitalizeLang('delete')
+                            </x-jet-danger-button>
                         </td>
                     </tr>
                 @endforeach
@@ -82,7 +89,33 @@
 
         <x-slot name="footer">
             <x-jet-secondary-button wire:click="$set('modalOpen', false)" class="mr-1">@capitalizeLang('cancel')</x-jet-secondary-button>
-            <x-jet-button wire:click="updateColor()">@capitalizeLang('update')</x-jet-button>
+            <x-jet-button wire:click="updateColor()" wire:loading.attr="disabled" wire:target="updateColor()">
+                @capitalizeLang('update')
+            </x-jet-button>
         </x-slot>
     </x-jet-dialog-modal>
+
+    @push('script')
+        <script>
+            Livewire.on('askDeleteColor', colorId => {
+                Swal.fire({
+                    title: "@lang('Are you sure?')",
+                    text: `@lang("You won't be able to revert this!")`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: "@lang('Yes, delete it!')"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.emit('deleteColor', colorId);
+                        Swal.fire({
+                            title: "@capitalizeLang('removing')" + "..."
+                        })
+                        Swal.showLoading()
+                    }
+                });
+            });
+        </script>
+    @endpush
 </div>

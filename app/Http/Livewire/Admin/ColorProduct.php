@@ -18,6 +18,7 @@ class ColorProduct extends Component
     public $modalColorId;
     public $modalColorOldId;
     public $modalQuantity;
+    protected $listeners = ['deleteColor'];
 
     public function mount()
     {
@@ -65,6 +66,13 @@ class ColorProduct extends Component
         }
     }
 
+    public function deleteColor(int $colorId)
+    {
+        $this->product->colors()->detach($colorId);
+        $this->product = $this->product->fresh();
+        $this->alert('success', __('The :element was successfully removed.', ['element'=>__('product')]));
+    }
+
     public function updateColor()
     {
         if ($this->modalColorOldId != $this->modalColorId) {
@@ -79,9 +87,7 @@ class ColorProduct extends Component
         }
 
         $this->product = $this->product->fresh();
-
         $this->modalOpen = false;
-
         $this->alert('success', __('The :element was edited successfully.', ['element'=>__('product')]));
     }
 }
