@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -30,11 +31,21 @@ class Category extends Model
     }
 
     /**
+     * Get link imagen.
+     *
+     * @return string
+     */
+    public function getUrlAttribute()
+    {
+        return Storage::exists($this->image) ? Storage::url($this->image) : asset('img/image-does-not-exist.jpg');
+    }
+
+    /**
      * Get all of the subcategories for the Category
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function subcategories(): HasMany
+    public function subcategories()
     {
         return $this->hasMany(Subcategory::class, 'category_id', 'id');
     }
@@ -44,7 +55,7 @@ class Category extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function brands(): BelongsToMany
+    public function brands()
     {
         return $this->belongsToMany(Brand::class, 'brand_category', 'category_id', 'brand_id')
                     ->withPivot('id','brand_id','category_id')

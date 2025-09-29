@@ -2,7 +2,9 @@
 
 namespace App\Helpers;
 
+use App\Models\Size;
 use App\Models\Product;
+use Gloudemans\Shoppingcart\CartItem;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class Utils
@@ -67,5 +69,30 @@ class Utils
     public static function qty_available(int $productId, int $colorId = null, int $sizeId = null)
     {
         return self::quantity($productId, $colorId, $sizeId) - self::qty_added($productId, $colorId, $sizeId);
+    }
+
+    /**
+     * Method discount
+     *
+     * @param Gloudemans\Shoppingcart\CartItem $item
+     *
+     * @return void
+     */
+    public static function discount(CartItem $item)
+    {
+        $product = Product::with('sizes')->find($item->id);
+        $colorId = !empty($item->options['color']) ? $item->options['color']['id'] : null;
+        $sizeId = !empty($item->options['size']) ? $item->options['size']['id'] : null;
+
+        $qtyAvailable = self::qty_available($product->id, $colorId, $sizeId);
+
+        if ($sizeId && $colorId && ($size = $product->sizes->firstWhere('id', $sizeId))) {
+            $size->colors()->updateExistingPivot($colorId, ['quantity' => $qtyAvailable]);
+        } elseif ($colorId) {
+            $product->colors()->updateExistingPivot($colorId, ['quantity' => $qtyAvailable]);
+        } else {
+            $product->quantity = $qtyAvailable;
+            $product->save();
+        }
     }
 }

@@ -1,4 +1,4 @@
-<header class="sticky top-0 z-50 bg-gray-700" x-data="dropdown()">
+<header class="sticky top-0 bg-gray-700" style="z-index: 900;" x-data="dropdown()">
     <div class="container flex items-center justify-between h-16 md:justify-start">
         <a x-on:click="show()" :class="{'bg-opacity-100 text-red-500': open}"
         class="flex flex-col items-center justify-center order-last h-full px-6 font-semibold text-white bg-white bg-opacity-25 cursor-pointer md:order-first md:px-4">
@@ -30,11 +30,19 @@
                 <x-slot name="content">
                     <!-- Account Management -->
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Manage Account') }}
+                        @lang('Manage Account')
                     </div>
 
                     <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                        {{ __('Profile') }}
+                        @lang('Profile')
+                    </x-jet-dropdown-link>
+
+                    <x-jet-dropdown-link href="{{ route('orders.index') }}">
+                        @lang('My orders')
+                    </x-jet-dropdown-link>
+
+                    <x-jet-dropdown-link href="{{ route('admin.home') }}">
+                        @capitalizeLang('administrator')
                     </x-jet-dropdown-link>
 
                     <div class="border-t border-gray-100"></div>
@@ -43,9 +51,8 @@
                     <form method="POST" action="{{ route('logout') }}" x-data>
                         @csrf
 
-                        <x-jet-dropdown-link href="{{ route('logout') }}"
-                                 @click.prevent="$root.submit();">
-                            {{ __('Log Out') }}
+                        <x-jet-dropdown-link @click.prevent="$root.submit();" href="{{ route('logout') }}">
+                            @lang('Log Out')
                         </x-jet-dropdown-link>
                     </form>
                 </x-slot>

@@ -1,12 +1,12 @@
 @props(['product'])
 
-<li class="bg-white rounded-lg shadow mb-4">
+<li class="mb-4 bg-white rounded-lg shadow">
     <article class="flex">
         <figure>
-            <img class="h-48 w-56 object-cover object-center" src="{{ Storage::url($product->images->first()->url) }}" alt="">
+            <img class="object-cover object-center w-56 h-48" src="{{ $product->images->first()->link }}" alt="">
         </figure>
 
-        <div class="flex-1 py-4 px-6 flex flex-col">
+        <div class="flex flex-col flex-1 px-6 py-4">
             <div class="flex justify-between">
                 <div>
                     <h1 class="text-lg font-semibold text-gray-700">{{ $product->name }}</h1>
@@ -16,26 +16,26 @@
                 <div class="flex items-center">
                     <ul class="flex text-sm">
                         <li>
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="mr-1 text-yellow-400 fas fa-star"></i>
                         </li>
                         <li>
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="mr-1 text-yellow-400 fas fa-star"></i>
                         </li>
                         <li>
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="mr-1 text-yellow-400 fas fa-star"></i>
                         </li>
                         <li>
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="mr-1 text-yellow-400 fas fa-star"></i>
                         </li>
                         <li>
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="mr-1 text-yellow-400 fas fa-star"></i>
                         </li>
                         <li>
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="mr-1 text-yellow-400 fas fa-star"></i>
                         </li>
                     </ul>
 
-                    <span class="text-gray-700 text-sm">(24)</span>
+                    <span class="text-sm text-gray-700">(24)</span>
                 </div>
             </div>
 
